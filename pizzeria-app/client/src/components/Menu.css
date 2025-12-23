@@ -1,0 +1,178 @@
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.menu-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 2.5rem;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c62828;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.no-pizzas {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #999;
+}
+
+.pizzas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.pizza-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pizza-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pizza-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+
+.pizza-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pizza-info h2 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.category {
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 5px 0 10px 0;
+}
+
+.description {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.toppings {
+  margin-bottom: 15px;
+}
+
+.toppings strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.toppings ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toppings li {
+  background-color: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.pizza-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.btn-add-to-cart {
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #e55a24;
+  transform: scale(1.05);
+}
+
+.btn-add-to-cart:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    padding: 20px;
+  }
+
+  .menu-container h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .pizzas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .pizza-image {
+    height: 150px;
+  }
+
+  .pizza-info {
+    padding: 15px;
+  }
+}
