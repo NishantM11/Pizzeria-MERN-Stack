@@ -94,13 +94,13 @@ pizzeria-app/
 - **Route:** `GET /api/pizzas`
 - **Query Parameters:**
   - `search` (string): Text search on pizza name
-  - `category` (enum): Filter by category (Vegetarian, Meat Lovers, Seafood, Specialty)
+  - `category` (enum): Filter by category (Vegetarian, Non-Vegetarian, Seafood, Specialty)
   - `minPrice` (number): Minimum price filter
   - `maxPrice` (number): Maximum price filter
 
 **Frontend FilterBar Component:**
 - Search input for pizza names
-- Category dropdown (Vegetarian, Meat Lovers, Seafood, Specialty)
+- Category dropdown (Vegetarian, Non-Vegetarian, Seafood, Specialty)
 - Price range inputs (min/max)
 - Apply and Reset buttons
 - Responsive design

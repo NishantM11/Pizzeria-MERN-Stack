@@ -22,13 +22,18 @@ app.use((req, res, next) => {
     next();
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Pizzeria API is running at http://localhost:5000/api/pizzas' });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'Server is running' });
 });
 
-// Mock data seeding
-app.post('/api/seed-pizzas', async (req, res) => {
+// Mock data seeding (GET and POST)
+app.get('/api/seed-pizzas', async (req, res) => {
     try {
         // Clear existing pizzas
         await Pizza.deleteMany({});
@@ -46,7 +51,7 @@ app.post('/api/seed-pizzas', async (req, res) => {
                 name: 'Pepperoni Paradise',
                 description: 'Loaded with pepperoni and cheese',
                 price: 12.99,
-                category: 'Meat Lovers',
+                category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Mozzarella', 'Tomato'],
                 imageUrl: 'https://via.placeholder.com/300x200?text=Pepperoni'
             },
@@ -62,7 +67,7 @@ app.post('/api/seed-pizzas', async (req, res) => {
                 name: 'Meat Lovers Feast',
                 description: 'Pepperoni, sausage, bacon, and ham',
                 price: 14.99,
-                category: 'Meat Lovers',
+                category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Sausage', 'Bacon', 'Ham'],
                 imageUrl: 'https://via.placeholder.com/300x200?text=Meat'
             },
@@ -86,7 +91,106 @@ app.post('/api/seed-pizzas', async (req, res) => {
                 name: 'BBQ Chicken',
                 description: 'Grilled chicken with BBQ sauce and onions',
                 price: 13.99,
-                category: 'Meat Lovers',
+                category: 'Non-Vegetarian',
+                toppings: ['Chicken', 'BBQ Sauce', 'Onions', 'Cilantro'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=BBQ+Chicken'
+            },
+            {
+                name: 'Mushroom Magic',
+                description: 'Assorted mushrooms with garlic and herbs',
+                price: 10.99,
+                category: 'Vegetarian',
+                toppings: ['Mushrooms', 'Garlic', 'Herbs', 'Mozzarella'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Mushroom'
+            },
+            {
+                name: 'Spicy Inferno',
+                description: 'Hot peppers and jalapeños with spicy sauce',
+                price: 12.99,
+                category: 'Specialty',
+                toppings: ['Jalapeños', 'Red Peppers', 'Habanero', 'Spicy Sauce'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Spicy'
+            },
+            {
+                name: 'White Sauce Classic',
+                description: 'Creamy white sauce with garlic and herbs',
+                price: 11.99,
+                category: 'Vegetarian',
+                toppings: ['White Sauce', 'Garlic', 'Spinach', 'Ricotta'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=White+Sauce'
+            }
+        ];
+
+        const savedPizzas = await Pizza.insertMany(mockPizzas);
+        res.status(201).json({ 
+            message: 'Pizzas seeded successfully', 
+            count: savedPizzas.length,
+            pizzas: savedPizzas 
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error seeding pizzas', error });
+    }
+});
+
+app.post('/api/seed-pizzas', async (req, res) => {
+    try {
+        // Clear existing pizzas
+        await Pizza.deleteMany({});
+
+        const mockPizzas = [
+            {
+                name: 'Margherita',
+                description: 'Classic pizza with tomato, mozzarella, and basil',
+                price: 9.99,
+                category: 'Vegetarian',
+                toppings: ['Tomato', 'Mozzarella', 'Basil'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Margherita'
+            },
+            {
+                name: 'Pepperoni Paradise',
+                description: 'Loaded with pepperoni and cheese',
+                price: 12.99,
+                category: 'Non-Vegetarian',
+                toppings: ['Pepperoni', 'Mozzarella', 'Tomato'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Pepperoni'
+            },
+            {
+                name: 'Vegetarian Supreme',
+                description: 'Mix of fresh vegetables with mozzarella',
+                price: 11.99,
+                category: 'Vegetarian',
+                toppings: ['Bell Peppers', 'Mushrooms', 'Onions', 'Spinach'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Veggie'
+            },
+            {
+                name: 'Non-Vegetarian Feast',
+                description: 'Pepperoni, sausage, bacon, and ham',
+                price: 14.99,
+                category: 'Non-Vegetarian',
+                toppings: ['Pepperoni', 'Sausage', 'Bacon', 'Ham'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Meat'
+            },
+            {
+                name: 'Seafood Deluxe',
+                description: 'Fresh shrimp, mussels, and calamari',
+                price: 15.99,
+                category: 'Seafood',
+                toppings: ['Shrimp', 'Mussels', 'Calamari', 'Garlic'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Seafood'
+            },
+            {
+                name: 'Hawaiian Special',
+                description: 'Ham and pineapple on a cheesy base',
+                price: 11.99,
+                category: 'Specialty',
+                toppings: ['Ham', 'Pineapple', 'Mozzarella'],
+                imageUrl: 'https://via.placeholder.com/300x200?text=Hawaiian'
+            },
+            {
+                name: 'BBQ Chicken',
+                description: 'Grilled chicken with BBQ sauce and onions',
+                price: 13.99,
+                category: 'Non-Vegetarian',
                 toppings: ['Chicken', 'BBQ Sauce', 'Onions', 'Cilantro'],
                 imageUrl: 'https://via.placeholder.com/300x200?text=BBQ+Chicken'
             },

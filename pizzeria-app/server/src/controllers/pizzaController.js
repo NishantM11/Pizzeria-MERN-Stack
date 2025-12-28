@@ -16,7 +16,7 @@ const MOCK_PIZZAS = [
         name: 'Pepperoni Paradise',
         description: 'Loaded with pepperoni and cheese',
         price: 12.99,
-        category: 'Meat Lovers',
+        category: 'Non-Vegetarian',
         toppings: ['Pepperoni', 'Mozzarella', 'Tomato'],
         imageUrl: 'https://via.placeholder.com/300x200?text=Pepperoni'
     },
@@ -34,7 +34,7 @@ const MOCK_PIZZAS = [
         name: 'Meat Lovers Feast',
         description: 'Pepperoni, sausage, bacon, and ham',
         price: 14.99,
-        category: 'Meat Lovers',
+        category: 'Non-Vegetarian',
         toppings: ['Pepperoni', 'Sausage', 'Bacon', 'Ham'],
         imageUrl: 'https://via.placeholder.com/300x200?text=Meat'
     },
@@ -61,7 +61,7 @@ const MOCK_PIZZAS = [
         name: 'BBQ Chicken',
         description: 'Grilled chicken with BBQ sauce and onions',
         price: 13.99,
-        category: 'Meat Lovers',
+        category: 'Non-Vegetarian',
         toppings: ['Chicken', 'BBQ Sauce', 'Onions', 'Cilantro'],
         imageUrl: 'https://via.placeholder.com/300x200?text=BBQ+Chicken'
     },
@@ -104,7 +104,7 @@ exports.getAllPizzas = async (req, res) => {
         if (search) {
             query.name = { $regex: search, $options: 'i' };
         }
-        if (category) {
+        if (category && category !== 'All Categories') {
             query.category = category;
         }
         if (minPrice) {
@@ -115,11 +115,18 @@ exports.getAllPizzas = async (req, res) => {
         }
         
         const pizzas = await Pizza.find(query);
+        console.log('Database query returned:', pizzas.length, 'pizzas');
+        
+        if (pizzas.length === 0) {
+            console.log('No pizzas in database, returning mock data');
+            throw new Error('No pizzas in database');
+        }
+        
         res.status(200).json(pizzas);
     } catch (error) {
-        console.log('Database unavailable, returning mock data');
+        console.log('Database error, returning mock data:', error.message);
         // Return mock data if database is unavailable
-        let mockData = MOCK_PIZZAS;
+        let mockData = [...MOCK_PIZZAS];
         
         const { search, category, minPrice, maxPrice } = req.query;
         
@@ -128,7 +135,7 @@ exports.getAllPizzas = async (req, res) => {
                 p.name.toLowerCase().includes(search.toLowerCase())
             );
         }
-        if (category) {
+        if (category && category !== 'All Categories') {
             mockData = mockData.filter(p => p.category === category);
         }
         if (minPrice) {
@@ -138,6 +145,7 @@ exports.getAllPizzas = async (req, res) => {
             mockData = mockData.filter(p => p.price <= parseFloat(maxPrice));
         }
         
+        console.log('Returning', mockData.length, 'mock pizzas');
         res.status(200).json(mockData);
     }
 };

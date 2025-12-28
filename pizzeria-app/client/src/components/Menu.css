@@ -2,36 +2,38 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  background-color: #f8f9fa;
 }
 
 .menu-container h1 {
   text-align: center;
   margin-bottom: 40px;
-  color: #333;
+  color: #2c4f50;
   font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .error-message {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: #fadbd8;
+  color: #641e16;
   padding: 15px 20px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border-left: 4px solid #c62828;
+  border-left: 4px solid #e74c3c;
 }
 
 .loading {
   text-align: center;
   padding: 40px;
   font-size: 1.1rem;
-  color: #666;
+  color: #34495e;
 }
 
 .no-pizzas {
   text-align: center;
   padding: 40px;
   font-size: 1.1rem;
-  color: #999;
+  color: #7f8c8d;
 }
 
 .pizzas-grid {
@@ -73,22 +75,28 @@
 
 .pizza-info h2 {
   margin: 0 0 8px 0;
-  color: #333;
+  color: #2c3e50;
   font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .category {
-  color: #ff6b35;
+  color: white;
+  background-color: #e74c3c;
   font-weight: 600;
   font-size: 0.9rem;
   margin: 5px 0 10px 0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 .description {
-  color: #666;
+  color: #7f8c8d;
   font-size: 0.95rem;
   margin-bottom: 15px;
   flex-grow: 1;
+  line-height: 1.5;
 }
 
 .toppings {
@@ -98,7 +106,8 @@
 .toppings strong {
   display: block;
   margin-bottom: 8px;
-  color: #333;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .toppings ul {
@@ -111,11 +120,11 @@
 }
 
 .toppings li {
-  background-color: #f0f0f0;
+  background-color: #ecf0f1;
   padding: 4px 10px;
   border-radius: 16px;
   font-size: 0.85rem;
-  color: #555;
+  color: #34495e;
 }
 
 .pizza-footer {
@@ -130,11 +139,11 @@
 .price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ff6b35;
+  color: #27ae60;
 }
 
 .btn-add-to-cart {
-  background-color: #ff6b35;
+  background-color: #27ae60;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -145,7 +154,7 @@
 }
 
 .btn-add-to-cart:hover {
-  background-color: #e55a24;
+  background-color: #229954;
   transform: scale(1.05);
 }
 

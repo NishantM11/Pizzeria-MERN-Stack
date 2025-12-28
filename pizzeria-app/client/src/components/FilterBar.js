@@ -26,52 +26,52 @@ const FilterBar = ({ onFilter }) => {
   };
 
   return (
-    <div className="filter-bar">
-      <h2>Filter Pizzas</h2>
-      
-      <div className="filter-group">
-        <label>Search by Name:</label>
-        <input
-          type="text"
-          placeholder="Search pizzas..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+    <div className="filter-wrapper">
+      <div className="filter-container">
+        {/* Search Input */}
+        <div className="filter-item search-box">
+          <span className="filter-icon"></span>
+          <input
+            type="text"
+            placeholder="Search pizza name..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-      <div className="filter-group">
-        <label>Category:</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">All Categories</option>
-          <option value="Vegetarian">Vegetarian</option>
-          <option value="Meat Lovers">Meat Lovers</option>
-          <option value="Seafood">Seafood</option>
-          <option value="Specialty">Specialty</option>
-        </select>
-      </div>
+        {/* Category Select */}
+        <div className="filter-item">
+          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <option value="">All Categories</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Specialty">Specialty</option>
+          </select>
+        </div>
 
-      <div className="filter-group">
-        <label>Price Range:</label>
-        <div className="price-range">
+        {/* Price Inputs */}
+        <div className="filter-item price-inputs">
           <input
             type="number"
-            placeholder="Min Price"
+            placeholder="Min ₹"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
           />
-          <span>-</span>
+          <span className="price-dash">-</span>
           <input
             type="number"
-            placeholder="Max Price"
+            placeholder="Max ₹"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
           />
         </div>
-      </div>
 
-      <div className="filter-actions">
-        <button onClick={handleFilter} className="btn-apply">Apply Filters</button>
-        <button onClick={handleReset} className="btn-reset">Reset Filters</button>
+        {/* Action Buttons */}
+        <div className="filter-buttons">
+          <button onClick={handleFilter} className="btn-apply-small">Apply</button>
+          <button onClick={handleReset} className="btn-reset-small">Reset</button>
+        </div>
       </div>
     </div>
   );

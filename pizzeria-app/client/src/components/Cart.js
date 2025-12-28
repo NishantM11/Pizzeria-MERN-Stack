@@ -31,7 +31,7 @@ const Cart = () => {
                                 <img src={item.imageUrl} alt={item.name} className="item-image" />
                                 <div className="item-details">
                                     <h3>{item.name}</h3>
-                                    <p className="item-price">${item.price.toFixed(2)}</p>
+                                    <p className="item-price">₹{(item.price * 83).toFixed(0)}</p>
                                 </div>
                                 <div className="item-quantity">
                                     <button 
@@ -49,7 +49,7 @@ const Cart = () => {
                                     </button>
                                 </div>
                                 <div className="item-total">
-                                    ${(item.price * item.quantity).toFixed(2)}
+                                    ₹{(item.price * item.quantity * 83).toFixed(0)}
                                 </div>
                                 <button 
                                     onClick={() => handleRemoveItem(item._id)}
@@ -64,15 +64,15 @@ const Cart = () => {
                     <div className="cart-summary">
                         <div className="summary-row">
                             <span className="summary-label">Subtotal:</span>
-                            <span className="summary-value">${totalPrice.toFixed(2)}</span>
+                            <span className="summary-value">₹{(totalPrice * 83).toFixed(0)}</span>
                         </div>
                         <div className="summary-row">
                             <span className="summary-label">Tax (10%):</span>
-                            <span className="summary-value">${(totalPrice * 0.1).toFixed(2)}</span>
+                            <span className="summary-value">₹{(totalPrice * 0.1 * 83).toFixed(0)}</span>
                         </div>
                         <div className="summary-row total">
                             <span className="summary-label">Total:</span>
-                            <span className="summary-value">${(totalPrice * 1.1).toFixed(2)}</span>
+                            <span className="summary-value">₹{(totalPrice * 1.1 * 83).toFixed(0)}</span>
                         </div>
                         <button className="btn-checkout">Proceed to Checkout</button>
                     </div>

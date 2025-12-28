@@ -1,32 +1,44 @@
 .header {
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  color: white;
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #E63946 100%, #e8e99f 80%);
+  color: rgba(0, 0, 0, 0.678);
+  /* changed padding to handle height better */
+  padding: 0; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+  
+  /* CRITICAL FIXES FOR FULL WIDTH */
+  width: 100%; 
+  left: 0;
+  right: 0;
 }
 
 .header-container {
+  display: flex;                /* Enables Flexbox */
+  justify-content: space-between; /* Pushes Logo to left, Menu to right */
+  align-items: center;          /* VERTICAL ALIGNMENT (Crucial) */
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 20px;
 }
 
+/* ... Rest of your CSS below remains mostly the same ... */
+
 .logo {
-  font-size: 1.8rem;
+  font-size: 5.0rem;
   font-weight: 700;
   letter-spacing: -1px;
 }
 
 .logo a {
-  color: white;
+  color: #332e2e;
   text-decoration: none;
   transition: all 0.3s ease;
+  display: flex; /* Aligns icon and text */
+  align-items: center;
+  gap: 10px;
 }
 
 .logo a:hover {
@@ -35,68 +47,66 @@
 }
 
 .navbar {
-  flex: 1;
-  margin-left: 3rem;
+  display: flex;
+  align-items: center;         /* Ensures the whole nav block is centered */
 }
 
 .nav-links {
+  display: flex;               /* Forces items into a ROW */
+  flex-direction: row;         /* Explicitly sets horizontal direction */
+  align-items: center;         /* Vertically centers text */
+  gap: 50px;                   /* Space between Home, Menu, etc. */
   list-style: none;
-  display: flex;
-  gap: 2rem;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+/* 4. Individual Links */
+.nav-links li {
+  display: flex;               /* Safety check to keep li content aligned */
+  align-items: center;
 }
 
 .nav-links a {
-  color: white;
   text-decoration: none;
+  color: #332e2e;
   font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0;
+  white-space: nowrap;         /* PREVENTS WRAPPING */
 }
 
-.nav-links a:hover {
-  transform: translateY(-2px);
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: white;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
+/* 5. Fixing the Cart Icon Alignment (The issue in your image) */
 .cart-link {
-  position: relative;
-  display: flex;
+  display: flex;               /* Makes Icon and Text sit side-by-side */
+  align-items: center;         /* Centers Icon vertically with Text */
+  gap: 15px;                    /* Space between icon and word "Cart" */
+}
+
+.cart-icon {
+  font-size: 2.0rem;           /* Adjust size to match text */
+  display: flex;               /* Removes weird line-height issues on emojis */
   align-items: center;
-  gap: 0.5rem;
 }
 
 .cart-badge {
   position: absolute;
   top: -8px;
   right: -12px;
-  background-color: #d32f2f;
+  background-color: #e74c3c;
   color: white;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 20px; /* Slightly adjusted size for better alignment */
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
   font-weight: 700;
   animation: pulse 0.5s ease-out;
+  transition: background-color 0.3s ease;
+}
+
+.cart-badge:hover {
+  background-color: #c0392b;
 }
 
 @keyframes pulse {
@@ -114,6 +124,7 @@
   .header-container {
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem;
   }
 
   .logo {
@@ -121,25 +132,26 @@
   }
 
   .navbar {
-    margin-left: 0;
     width: 100%;
+    justify-content: center;
   }
 
   .nav-links {
-    flex-direction: column;
+    flex-direction: column; /* Stack links on mobile */
     gap: 1rem;
     text-align: center;
+    width: 100%;
+  }
+  
+  .nav-links li {
+    width: 100%;
   }
 
-  .nav-links li {
-    padding: 0.5rem 0;
+  .nav-links a {
+    display: block; /* Makes the click area full width */
   }
 
   .nav-links a::after {
     display: none;
-  }
-
-  .nav-links a:active {
-    opacity: 0.7;
   }
 }

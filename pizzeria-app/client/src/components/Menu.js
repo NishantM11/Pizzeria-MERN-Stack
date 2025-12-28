@@ -52,7 +52,7 @@ const Menu = () => {
 
     return (
         <div className="menu-container">
-            <h1>Our Delicious Menu</h1>
+            <h1>Crafted Flavors, Straight from the Oven</h1>
             
             <FilterBar onFilter={handleFilter} />
             
@@ -78,7 +78,7 @@ const Menu = () => {
                                     </ul>
                                 </div>
                                 <div className="pizza-footer">
-                                    <span className="price">${pizza.price.toFixed(2)}</span>
+                                    <span className="price">₹{(pizza.price * 83).toFixed(0)}</span>
                                     <button 
                                         onClick={() => handleAddToCart(pizza)}
                                         className="btn-add-to-cart"

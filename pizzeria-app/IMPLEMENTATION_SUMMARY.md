@@ -66,7 +66,7 @@ GET /api/pizzas?search=&category=&minPrice=&maxPrice=
 
 **Query Parameters:**
 - `search` - Text search on pizza name (regex, case-insensitive)
-- `category` - Enum filter (Vegetarian, Meat Lovers, Seafood, Specialty)
+- `category` - Enum filter (Vegetarian, Non-Vegetarian, Seafood, Specialty)
 - `minPrice` - Minimum price filter
 - `maxPrice` - Maximum price filter
 
