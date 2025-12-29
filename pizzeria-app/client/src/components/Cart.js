@@ -1,10 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { removeItem, updateQuantity } from '../redux/cartSlice';
 import './Cart.css';
 
 const Cart = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { items, totalPrice } = useSelector(state => state.cart);
 
     const handleRemoveItem = (id) => {
@@ -31,7 +33,7 @@ const Cart = () => {
                                 <img src={item.imageUrl} alt={item.name} className="item-image" />
                                 <div className="item-details">
                                     <h3>{item.name}</h3>
-                                    <p className="item-price">₹{(item.price * 83).toFixed(0)}</p>
+                                    <p className="item-price">₹{item.price}</p>
                                 </div>
                                 <div className="item-quantity">
                                     <button 
@@ -49,7 +51,7 @@ const Cart = () => {
                                     </button>
                                 </div>
                                 <div className="item-total">
-                                    ₹{(item.price * item.quantity * 83).toFixed(0)}
+                                    ₹{item.price * item.quantity}
                                 </div>
                                 <button 
                                     onClick={() => handleRemoveItem(item._id)}
@@ -64,17 +66,17 @@ const Cart = () => {
                     <div className="cart-summary">
                         <div className="summary-row">
                             <span className="summary-label">Subtotal:</span>
-                            <span className="summary-value">₹{(totalPrice * 83).toFixed(0)}</span>
+                            <span className="summary-value">₹{totalPrice}</span>
                         </div>
                         <div className="summary-row">
                             <span className="summary-label">Tax (10%):</span>
-                            <span className="summary-value">₹{(totalPrice * 0.1 * 83).toFixed(0)}</span>
+                            <span className="summary-value">₹{(totalPrice * 0.1).toFixed(0)}</span>
                         </div>
                         <div className="summary-row total">
                             <span className="summary-label">Total:</span>
-                            <span className="summary-value">₹{(totalPrice * 1.1 * 83).toFixed(0)}</span>
+                            <span className="summary-value">₹{totalPrice + (totalPrice * 0.1)}</span>
                         </div>
-                        <button className="btn-checkout">Proceed to Checkout</button>
+                        <button className="btn-checkout" onClick={() => history.push('/checkout')}>Proceed to Checkout</button>
                     </div>
                 </>
             )}

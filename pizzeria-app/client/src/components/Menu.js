@@ -47,7 +47,7 @@ const Menu = () => {
     };
 
     if (loading && pizzas.length === 0) {
-        return <div className="loading">Loading pizzas...</div>;
+        return <div className="loading">Loading delicious pizzas...</div>;
     }
 
     return (
@@ -56,7 +56,7 @@ const Menu = () => {
             
             <FilterBar onFilter={handleFilter} />
             
-            {error && <div className="error-message">{error}</div>}
+            {error && <div className="error-message">❌ {error}</div>}
             
             {pizzas.length === 0 ? (
                 <p className="no-pizzas">No pizzas found. Try adjusting your filters.</p>
@@ -78,7 +78,7 @@ const Menu = () => {
                                     </ul>
                                 </div>
                                 <div className="pizza-footer">
-                                    <span className="price">₹{(pizza.price * 83).toFixed(0)}</span>
+                                    <span className="price">₹{pizza.price}</span>
                                     <button 
                                         onClick={() => handleAddToCart(pizza)}
                                         className="btn-add-to-cart"

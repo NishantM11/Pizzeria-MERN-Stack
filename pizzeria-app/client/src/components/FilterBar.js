@@ -36,12 +36,17 @@ const FilterBar = ({ onFilter }) => {
             placeholder="Search pizza name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleFilter()}
           />
         </div>
 
         {/* Category Select */}
         <div className="filter-item">
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <select 
+            value={category} 
+            onChange={(e) => setCategory(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleFilter()}
+          >
             <option value="">All Categories</option>
             <option value="Vegetarian">Vegetarian</option>
             <option value="Non-Vegetarian">Non-Vegetarian</option>
@@ -57,6 +62,7 @@ const FilterBar = ({ onFilter }) => {
             placeholder="Min ₹"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleFilter()}
           />
           <span className="price-dash">-</span>
           <input
@@ -64,6 +70,7 @@ const FilterBar = ({ onFilter }) => {
             placeholder="Max ₹"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleFilter()}
           />
         </div>
 

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Orders from './pages/Orders';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import OrderForm from './components/OrderForm';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/menu" component={Menu} />
           <Route path="/orders" component={Orders} />
           <Route path="/cart" component={Cart} />
+          <Route path="/checkout" component={Checkout} />
           <Route path="/order" component={OrderForm} />
         </Switch>
       </Router>

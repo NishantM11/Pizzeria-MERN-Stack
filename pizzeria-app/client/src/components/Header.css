@@ -1,69 +1,105 @@
+/* =========================================
+   1. Main Header Wrapper
+   ========================================= */
 .header {
   background: linear-gradient(135deg, #E63946 100%, #e8e99f 80%);
-  color: rgba(0, 0, 0, 0.678);
-  /* changed padding to handle height better */
-  padding: 0; 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.822);
+  padding: 10px 0;
+  box-shadow: 0 4px 15px rgba(247, 247, 247, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  
-  /* CRITICAL FIXES FOR FULL WIDTH */
-  width: 100%; 
+  width: 100%;
   left: 0;
   right: 0;
 }
 
 .header-container {
-  display: flex;                /* Enables Flexbox */
-  justify-content: space-between; /* Pushes Logo to left, Menu to right */
-  align-items: center;          /* VERTICAL ALIGNMENT (Crucial) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
-/* ... Rest of your CSS below remains mostly the same ... */
-
+/* =========================================
+   2. Logo Section
+   ========================================= */
 .logo {
-  font-size: 5.0rem;
-  font-weight: 700;
-  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  z-index: 101;
 }
 
-.logo a {
+.logo-link {
   color: #332e2e;
   text-decoration: none;
   transition: all 0.3s ease;
-  display: flex; /* Aligns icon and text */
+  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.logo a:hover {
+.logo-link:hover {
   transform: scale(1.05);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  -webkit-text-stroke: 1.5px #FFF9C4;
+}
+
+/* =========================================
+   3. Hamburger Menu Icon
+   ========================================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+}
+
+.hamburger .line {
+  width: 28px;
+  height: 3px;
+  background-color: #332e2e;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* =========================================
+   4. Navigation Bar
+   ========================================= */
 .navbar {
   display: flex;
-  align-items: center;         /* Ensures the whole nav block is centered */
+  align-items: center;
 }
 
 .nav-links {
-  display: flex;               /* Forces items into a ROW */
-  flex-direction: row;         /* Explicitly sets horizontal direction */
-  align-items: center;         /* Vertically centers text */
-  gap: 50px;                   /* Space between Home, Menu, etc. */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* 4. Individual Links */
 .nav-links li {
-  display: flex;               /* Safety check to keep li content aligned */
+  display: flex;
   align-items: center;
 }
 
@@ -71,30 +107,40 @@
   text-decoration: none;
   color: #332e2e;
   font-weight: 500;
-  white-space: nowrap;         /* PREVENTS WRAPPING */
+  font-size: 1.1rem;
+  white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
-/* 5. Fixing the Cart Icon Alignment (The issue in your image) */
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* =========================================
+   5. Cart Icon
+   ========================================= */
 .cart-link {
-  display: flex;               /* Makes Icon and Text sit side-by-side */
-  align-items: center;         /* Centers Icon vertically with Text */
-  gap: 15px;                    /* Space between icon and word "Cart" */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
 }
 
 .cart-icon {
-  font-size: 2.0rem;           /* Adjust size to match text */
-  display: flex;               /* Removes weird line-height issues on emojis */
+  font-size: 1.8rem;
+  display: flex;
   align-items: center;
+  position: relative;
 }
 
 .cart-badge {
   position: absolute;
   top: -8px;
-  right: -12px;
+  right: -10px;
   background-color: #e74c3c;
   color: white;
   border-radius: 50%;
-  width: 20px; /* Slightly adjusted size for better alignment */
+  width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
@@ -102,7 +148,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   animation: pulse 0.5s ease-out;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .cart-badge:hover {
@@ -110,48 +156,101 @@
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1.3);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  0% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
+/* =========================================
+   6. Mobile Responsiveness
+   ========================================= */
 @media (max-width: 768px) {
   .header-container {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
   }
 
-  .logo {
-    font-size: 1.5rem;
+  .logo-img {
+    height: 60px;
   }
 
+  .logo-text {
+    font-size: 2rem;
+  }
+
+  /* Show Hamburger Menu */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide regular navbar on mobile */
   .navbar {
-    width: 100%;
-    justify-content: center;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #E63946;
+    flex-direction: column;
+    align-items: stretch;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Show navbar when open */
+  .navbar.open {
+    max-height: 400px;
+    padding: 20px 0;
   }
 
   .nav-links {
-    flex-direction: column; /* Stack links on mobile */
-    gap: 1rem;
-    text-align: center;
-    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
   }
-  
+
   .nav-links li {
-    width: 100%;
+    display: flex;
+    align-items: stretch;
   }
 
   .nav-links a {
-    display: block; /* Makes the click area full width */
+    display: block;
+    padding: 15px 20px;
+    text-align: left;
+    color: #332e2e;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .nav-links a::after {
-    display: none;
+  .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  .cart-link {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .hamburger .line {
+    width: 24px;
+    height: 2.5px;
+  }
+
+  .nav-links a {
+    padding: 12px 15px;
+    font-size: 0.95rem;
   }
 }

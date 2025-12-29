@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const pizzaRoutes = require('./routes/pizzaRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+
+// Serve static files (images) from public folder
+app.use('/images', express.static(path.join(__dirname, '../../client/public')));
 
 // CORS middleware
 app.use((req, res, next) => {
@@ -42,82 +46,82 @@ app.get('/api/seed-pizzas', async (req, res) => {
             {
                 name: 'Margherita',
                 description: 'Classic pizza with tomato, mozzarella, and basil',
-                price: 9.99,
+                price: 829,
                 category: 'Vegetarian',
                 toppings: ['Tomato', 'Mozzarella', 'Basil'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Margherita'
+                imageUrl: 'http://localhost:5000/images/Margherita%20Pizza.png'
             },
             {
                 name: 'Pepperoni Paradise',
                 description: 'Loaded with pepperoni and cheese',
-                price: 12.99,
+                price: 1078,
                 category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Mozzarella', 'Tomato'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Pepperoni'
+                imageUrl: 'http://localhost:5000/images/Pepperoni%20Paradise.png'
             },
             {
                 name: 'Vegetarian Supreme',
                 description: 'Mix of fresh vegetables with mozzarella',
-                price: 11.99,
+                price: 995,
                 category: 'Vegetarian',
                 toppings: ['Bell Peppers', 'Mushrooms', 'Onions', 'Spinach'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Veggie'
+                imageUrl: 'http://localhost:5000/images/Vegetarian%20Supreme.png'
             },
             {
                 name: 'Meat Lovers Feast',
                 description: 'Pepperoni, sausage, bacon, and ham',
-                price: 14.99,
+                price: 1243,
                 category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Sausage', 'Bacon', 'Ham'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Meat'
+                imageUrl: 'http://localhost:5000/images/Meat%20Lovers%20Feast.png'
             },
             {
                 name: 'Seafood Deluxe',
                 description: 'Fresh shrimp, mussels, and calamari',
-                price: 15.99,
+                price: 1326,
                 category: 'Seafood',
                 toppings: ['Shrimp', 'Mussels', 'Calamari', 'Garlic'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Seafood'
+                imageUrl: 'http://localhost:5000/images/Seafood%20Deluxe.png'
             },
             {
                 name: 'Hawaiian Special',
                 description: 'Ham and pineapple on a cheesy base',
-                price: 11.99,
+                price: 995,
                 category: 'Specialty',
                 toppings: ['Ham', 'Pineapple', 'Mozzarella'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Hawaiian'
+                imageUrl: 'http://localhost:5000/images/Hawaiian%20Special.png'
             },
             {
                 name: 'BBQ Chicken',
                 description: 'Grilled chicken with BBQ sauce and onions',
-                price: 13.99,
+                price: 1161,
                 category: 'Non-Vegetarian',
                 toppings: ['Chicken', 'BBQ Sauce', 'Onions', 'Cilantro'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=BBQ+Chicken'
+                imageUrl: 'http://localhost:5000/images/BBQ%20Chicken.png'
             },
             {
                 name: 'Mushroom Magic',
                 description: 'Assorted mushrooms with garlic and herbs',
-                price: 10.99,
+                price: 912,
                 category: 'Vegetarian',
                 toppings: ['Mushrooms', 'Garlic', 'Herbs', 'Mozzarella'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Mushroom'
+                imageUrl: 'http://localhost:5000/images/Mushroom%20Magic.png'
             },
             {
                 name: 'Spicy Inferno',
                 description: 'Hot peppers and jalapeños with spicy sauce',
-                price: 12.99,
+                price: 1078,
                 category: 'Specialty',
                 toppings: ['Jalapeños', 'Red Peppers', 'Habanero', 'Spicy Sauce'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Spicy'
+                imageUrl: 'http://localhost:5000/images/Spicy%20Inferno.png'
             },
             {
                 name: 'White Sauce Classic',
                 description: 'Creamy white sauce with garlic and herbs',
-                price: 11.99,
+                price: 995,
                 category: 'Vegetarian',
                 toppings: ['White Sauce', 'Garlic', 'Spinach', 'Ricotta'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=White+Sauce'
+                imageUrl: 'http://localhost:5000/images/White%20Sauce%20Classic.png'
             }
         ];
 
@@ -141,82 +145,82 @@ app.post('/api/seed-pizzas', async (req, res) => {
             {
                 name: 'Margherita',
                 description: 'Classic pizza with tomato, mozzarella, and basil',
-                price: 9.99,
+                price: 829,
                 category: 'Vegetarian',
                 toppings: ['Tomato', 'Mozzarella', 'Basil'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Margherita'
+                imageUrl: 'http://localhost:5000/images/Margherita%20Pzza.png'
             },
             {
                 name: 'Pepperoni Paradise',
                 description: 'Loaded with pepperoni and cheese',
-                price: 12.99,
+                price: 1078,
                 category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Mozzarella', 'Tomato'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Pepperoni'
+                imageUrl: 'http://localhost:5000/images/Pepperoni%20Paradise.png'
             },
             {
                 name: 'Vegetarian Supreme',
                 description: 'Mix of fresh vegetables with mozzarella',
-                price: 11.99,
+                price: 995,
                 category: 'Vegetarian',
                 toppings: ['Bell Peppers', 'Mushrooms', 'Onions', 'Spinach'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Veggie'
+                imageUrl: 'http://localhost:5000/images/Vegetarian%20Supreme.png'
             },
             {
-                name: 'Non-Vegetarian Feast',
+                name: 'Meat Lovers Feast',
                 description: 'Pepperoni, sausage, bacon, and ham',
-                price: 14.99,
+                price: 1243,
                 category: 'Non-Vegetarian',
                 toppings: ['Pepperoni', 'Sausage', 'Bacon', 'Ham'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Meat'
+                imageUrl: 'http://localhost:5000/images/Meat%20Lovers%20Feast.png'
             },
             {
                 name: 'Seafood Deluxe',
                 description: 'Fresh shrimp, mussels, and calamari',
-                price: 15.99,
+                price: 1326,
                 category: 'Seafood',
                 toppings: ['Shrimp', 'Mussels', 'Calamari', 'Garlic'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Seafood'
+                imageUrl: 'http://localhost:5000/images/Seafood%20Deluxe.png'
             },
             {
                 name: 'Hawaiian Special',
                 description: 'Ham and pineapple on a cheesy base',
-                price: 11.99,
+                price: 995,
                 category: 'Specialty',
                 toppings: ['Ham', 'Pineapple', 'Mozzarella'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Hawaiian'
+                imageUrl: 'http://localhost:5000/images/Hawaiian%20Special.png'
             },
             {
                 name: 'BBQ Chicken',
                 description: 'Grilled chicken with BBQ sauce and onions',
-                price: 13.99,
+                price: 1161,
                 category: 'Non-Vegetarian',
                 toppings: ['Chicken', 'BBQ Sauce', 'Onions', 'Cilantro'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=BBQ+Chicken'
+                imageUrl: 'http://localhost:5000/images/BBQ%20Chicken.png'
             },
             {
                 name: 'Mushroom Magic',
                 description: 'Assorted mushrooms with garlic and herbs',
-                price: 10.99,
+                price: 912,
                 category: 'Vegetarian',
                 toppings: ['Mushrooms', 'Garlic', 'Herbs', 'Mozzarella'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Mushroom'
+                imageUrl: 'http://localhost:5000/images/Mushroom%20Magic.png'
             },
             {
                 name: 'Spicy Inferno',
                 description: 'Hot peppers and jalapeños with spicy sauce',
-                price: 12.99,
+                price: 1078,
                 category: 'Specialty',
                 toppings: ['Jalapeños', 'Red Peppers', 'Habanero', 'Spicy Sauce'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=Spicy'
+                imageUrl: 'http://localhost:5000/images/Spicy%20Inferno.png'
             },
             {
                 name: 'White Sauce Classic',
                 description: 'Creamy white sauce with garlic and herbs',
-                price: 11.99,
+                price: 995,
                 category: 'Vegetarian',
                 toppings: ['White Sauce', 'Garlic', 'Spinach', 'Ricotta'],
-                imageUrl: 'https://via.placeholder.com/300x200?text=White+Sauce'
+                imageUrl: 'http://localhost:5000/images/White%20Sauce%20Classic.png'
             }
         ];
 
@@ -228,6 +232,17 @@ app.post('/api/seed-pizzas', async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: 'Error seeding pizzas', error });
+    }
+});
+
+// Clear orders collection
+app.get('/api/clear-orders', async (req, res) => {
+    try {
+        const Order = require('./models/Order');
+        await Order.deleteMany({});
+        res.status(200).json({ message: 'All orders cleared successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error clearing orders', error });
     }
 });
 
